@@ -3,6 +3,7 @@ import pywifi
 import time
 import subprocess
 import socket
+import sys
 
 names=[]
 
@@ -71,9 +72,9 @@ def internet(host="8.8.8.8", port=53, timeout=3):
         return False
 
 #dumb but work
-def tryEveryAddInSub():
-    for ping in range(1,254):
-    address = "10.40.90." + str(ping)
+def tryEveryAddInSub(arg1, arg2, arg3):
+    for ping in range(arg2, arg3):
+    address = arg1 + str(ping)
     res = subprocess.call(['ping', '-c', '3', address])
     if res == 0:
         print( "ping to", address, "OK")
@@ -98,6 +99,8 @@ def writeAllNetworksNames():
     for name in names:
         print(name)
 
+tryEveryAddInSub("10.40.90.", 1, 254)
+writeAllNetworksNames()
 
 
   
