@@ -77,6 +77,8 @@ def tryEveryAddInSub():
     res = subprocess.call(['ping', '-c', '3', address])
     if res == 0:
         print( "ping to", address, "OK")
+        print(socket.gethostname())
+        print(socket.gethostbyaddr(socket.gethostname())[address])
     elif res == 2:
         print("no response from", address)
     else:
