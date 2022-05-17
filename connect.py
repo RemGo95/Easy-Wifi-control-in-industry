@@ -88,29 +88,13 @@ def writeAllNetworksNames():
     data = data.split('\n')
     for i in data:
      
-    # find "All User Profile" in each item
-    # as this item will have the wifi name
     if "All User Profile" in i :
-         
-        # if found split the item
-        # in order to get only the name
         i = i.split(":")
-         
-        # item at index 1 will be the wifi name
         i = i[1]
-         
-        # formatting the name
-        # first and last chracter is use less
         i = i[1:-1]
-         
-        # appending the wifi name in the list
         names.append(i)
- 
-# printing the wifi names
-print("All wifi that system has connected to are ")
-print("-----------------------------------------")
-for name in names:
-    print(name)
+    for name in names:
+        print(name)
 
 
 
