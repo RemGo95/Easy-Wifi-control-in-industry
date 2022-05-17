@@ -4,6 +4,8 @@
 
 using namespace std;
 
+std::string addresses[10];
+
 int tryAddress(string Address, int a, int b){
   
   for(int i = 0; i < b; i++){
@@ -23,6 +25,7 @@ int tryAddress(string Address, int a, int b){
 
 
 int main(){
+  
   tryAddress(10.40.90., 1, 254);  
   
 }
