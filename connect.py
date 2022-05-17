@@ -2,6 +2,7 @@ import intertools as it
 import pywifi
 import time
 import subprocess
+import socket
 
 #subprocess.check_output(args, *, stdin=None, stderr=None, shell=False, universal_newlines=False)
 
@@ -43,8 +44,7 @@ def WifiConnect(pwd):
             return False
     else:
         print('wifi,')
- 
-import socket
+
 
 def internet(host="8.8.8.8", port=53, timeout=3):
     #check connection to internet / Firewall, using trying to connect to public google dns socket tcp
@@ -55,6 +55,18 @@ def internet(host="8.8.8.8", port=53, timeout=3):
     except socket.error as ex:
         print(ex)
         return False
+
+#dumb but work
+def tryEveryAddInSub():
+    for ping in range(1,254):
+    address = "10.40.90." + str(ping)
+    res = subprocess.call(['ping', '-c', '3', address])
+    if res == 0:
+        print( "ping to", address, "OK")
+    elif res == 2:
+        print("no response from", address)
+    else:
+        print("ping to", address, "failed!")
 
 
 
