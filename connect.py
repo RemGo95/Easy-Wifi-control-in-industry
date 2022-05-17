@@ -4,6 +4,20 @@ import time
 import subprocess
 import socket
 
+names=[]
+
+PLC151Port1Address=192.168.151.2
+PLC151Port2Address=10.40.90.151
+
+PLC141Port1Address=192.168.141.2
+PLC141Port2Address=10.40.90.141
+
+PLC131Port1Address=192.168.131.2
+PLC131Port2Address=10.40.90.131
+
+PLC121Port1Address=192.168.121.2
+PLC121Port2Address=10.40.90.121
+
 #subprocess.check_output(args, *, stdin=None, stderr=None, shell=False, universal_newlines=False)
 
 def searchNetworks():
@@ -67,6 +81,36 @@ def tryEveryAddInSub():
         print("no response from", address)
     else:
         print("ping to", address, "failed!")
+        
+def writeAllNetworksNames():
+    meta_data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles'])
+    data = meta_data.decode('utf-8', errors ="backslashreplace")
+    data = data.split('\n')
+    for i in data:
+     
+    # find "All User Profile" in each item
+    # as this item will have the wifi name
+    if "All User Profile" in i :
+         
+        # if found split the item
+        # in order to get only the name
+        i = i.split(":")
+         
+        # item at index 1 will be the wifi name
+        i = i[1]
+         
+        # formatting the name
+        # first and last chracter is use less
+        i = i[1:-1]
+         
+        # appending the wifi name in the list
+        names.append(i)
+ 
+# printing the wifi names
+print("All wifi that system has connected to are ")
+print("-----------------------------------------")
+for name in names:
+    print(name)
 
 
 
