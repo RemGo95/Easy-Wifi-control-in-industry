@@ -1,10 +1,13 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
 
 std::string addresses[10];
+char file2[256];
 
 int tryAddress(string Address, int a, int b){
   
