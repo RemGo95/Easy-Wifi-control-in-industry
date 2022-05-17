@@ -11,6 +11,8 @@ def searchNetworks():
     devices= devices.replace("\r","")
     print(devices)
 
+
+
 def getPasswordsFile():
     dic=open('./passwords.txt','a')#
     t=its.product(words,repeat=3)#
@@ -41,6 +43,19 @@ def WifiConnect(pwd):
             return False
     else:
         print('wifi,')
+ 
+import socket
+
+def internet(host="8.8.8.8", port=53, timeout=3):
+    #check connection to internet / Firewall, using trying to connect to public google dns socket tcp
+    try:
+        socket.setdefaulttimeout(timeout)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        return True
+    except socket.error as ex:
+        print(ex)
+        return False
+
 
 
   
